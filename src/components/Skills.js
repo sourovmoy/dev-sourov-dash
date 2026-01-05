@@ -24,11 +24,11 @@ const Skills = () => {
 
   const tools = [
     { name: 'Git', icon: 'fab fa-git-alt', color: 'text-red-500' },
-    { name: 'GitHub', icon: 'fab fa-github', color: 'text-gray-300' },
+    { name: 'GitHub', icon: 'fab fa-github', color: 'text-gray-700 dark:text-gray-300' },
     { name: 'VS Code', icon: 'fas fa-code', color: 'text-blue-400' },
     { name: 'Postman', icon: 'fas fa-rocket', color: 'text-orange-500' },
-    { name: 'Nodemon', icon: 'fas fa-terminal', color: 'text-white' },
-    { name: 'Vercel', icon: 'fas fa-triangle-circle-square', color: 'text-white' },
+    { name: 'Nodemon', icon: 'fas fa-sync-alt', color: 'text-green-600 dark:text-green-400' },
+    { name: 'Vercel', icon: 'fas fa-bolt', color: 'text-gray-800 dark:text-white' },
     { name: 'Netlify', icon: 'fas fa-cloud', color: 'text-teal-400' },
     { name: 'Figma', icon: 'fab fa-figma', color: 'text-pink-500' }
   ];
@@ -73,6 +73,17 @@ const Skills = () => {
     const iconSize = size === 'large' ? 'text-4xl' : 'text-3xl';
     const textSize = size === 'large' ? 'text-sm' : 'text-xs';
     
+    // Special styling for specific tools to ensure visibility
+    const getIconStyle = (skillName, baseColor) => {
+      const specialStyles = {
+        'Nodemon': 'text-green-600 dark:text-green-400',
+        'Vercel': 'text-gray-800 dark:text-white',
+        'GitHub': 'text-gray-700 dark:text-gray-300'
+      };
+      
+      return specialStyles[skillName] || baseColor;
+    };
+    
     return (
       <motion.div 
         className={`skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 ${cardSize} flex flex-col items-center justify-center transition-all duration-300 group cursor-pointer`}
@@ -87,14 +98,14 @@ const Skills = () => {
         custom={index}
       >
         <motion.i 
-          className={`${skill.icon} ${iconSize} ${skill.color} mb-3 group-hover:scale-110 transition-transform`}
+          className={`${skill.icon} ${iconSize} ${getIconStyle(skill.name, skill.color)} mb-3 group-hover:scale-110 transition-transform`}
           whileHover={{ 
             rotate: 360,
             scale: 1.2
           }}
           transition={{ duration: 0.6 }}
         />
-        <span className={`font-bold ${textSize} text-center group-hover:text-primary transition-colors`}>
+        <span className={`font-bold ${textSize} text-center group-hover:text-primary transition-colors text-gray-700 dark:text-gray-300`}>
           {skill.name}
         </span>
       </motion.div>
