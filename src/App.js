@@ -24,13 +24,13 @@ function App() {
 
   return (
     <div className="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-300 font-body transition-colors duration-300">
-      {/* Initial Loading Screen */}
+      {/* Enhanced Initial Loading Screen */}
       <Loading 
         loading={isInitialLoading}
         overlay={true}
-        type="code"
+        type="orbital"
         size="large"
-        color="primary"
+        color="rainbow"
         text="Welcome to Sourov Dash Portfolio"
       />
       
