@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rifat - Full Stack Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&amp;family=Roboto+Mono:wght@400;500;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#06b6d4", // Cyan-500 equivalent for that neon blue look
+                        secondary: "#d946ef", // Fuchsia-500 for the magenta accents
+                        "background-light": "#f3f4f6",
+                        "background-dark": "#0a0a0f", // Deep dark background
+                        "card-dark": "#13131f",
+                        "accent-cyan": "#00f0ff",
+                        "accent-pink": "#ff00aa",
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                        mono: ["Roboto Mono", "monospace"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        };
+    </script>
+<style>.neon-text {
+            text-shadow: 0 0 5px rgba(6, 182, 212, 0.5), 0 0 10px rgba(6, 182, 212, 0.3);
+        }
+        .neon-text-pink {
+            text-shadow: 0 0 5px rgba(217, 70, 239, 0.5), 0 0 10px rgba(217, 70, 239, 0.3);
+        }
+        .glass-card {
+            background: rgba(19, 19, 31, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .skill-card:hover {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-300 font-body transition-colors duration-300">
+<nav class="fixed w-full z-50 top-0 left-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-white/5 px-6 py-4">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="font-display font-bold text-2xl text-primary neon-text tracking-wider">RIFAT</div>
+<div class="hidden md:flex space-x-8 text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="#about">About</a>
+<a class="hover:text-primary transition-colors" href="#skills">Skills</a>
+<a class="hover:text-primary transition-colors" href="#projects">Projects</a>
+<a class="hover:text-primary transition-colors" href="#contact">Contact</a>
+</div>
+<button class="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+<i class="fas fa-moon dark:hidden"></i>
+<i class="fas fa-sun hidden dark:inline-block"></i>
+</button>
+</div>
+</nav>
+<main class="pt-20">
+<section class="py-20 px-4 relative overflow-hidden" id="about">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2"></div>
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-display font-bold mb-2">
+<span class="text-primary neon-text">About</span> <span class="text-secondary neon-text-pink">Me</span>
+</h2>
+<div class="h-1 w-24 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="w-full md:w-1/2 space-y-6">
+<p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                            Hello, I am Rifat – an enthusiastic student, currently taking Programming Hero's Level 1 course and on my way to becoming a full-stack web developer. I practice coding regularly every day, try to learn something new, and gradually improve my skills. Every day brings new opportunities for me to learn, and this continuous effort is taking me closer to my goal.
+                        </p>
+<p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                            I am now almost at the end of the course and am more confident than ever. I believe that anything is possible with hard work, patience and confidence. I know that one day in the future I will definitely become a skilled and successful MERN Stack Developer. InshaAllah 😊👍
+                        </p>
+<div class="grid grid-cols-3 gap-4 pt-6">
+<div class="bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 text-center shadow-lg hover:border-primary/50 transition-colors group">
+<h3 class="text-3xl font-display font-bold text-primary mb-1 group-hover:scale-110 transition-transform">20+</h3>
+<p class="text-xs uppercase tracking-wider text-gray-500 font-bold">Projects Completed</p>
+</div>
+<div class="bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 text-center shadow-lg hover:border-primary/50 transition-colors group">
+<h3 class="text-3xl font-display font-bold text-primary mb-1 group-hover:scale-110 transition-transform">6+</h3>
+<p class="text-xs uppercase tracking-wider text-gray-500 font-bold">Months Experience</p>
+</div>
+<div class="bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 text-center shadow-lg hover:border-primary/50 transition-colors group">
+<h3 class="text-3xl font-display font-bold text-primary mb-1 group-hover:scale-110 transition-transform">100</h3>
+<p class="text-xs uppercase tracking-wider text-gray-500 font-bold">Happy Clients</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 flex justify-center relative">
+<div class="relative w-80 h-80 animate-pulse-slow">
+<div class="absolute inset-0 border border-primary/30 rounded-full transform rotate-45 scale-110"></div>
+<div class="absolute inset-0 border border-secondary/30 rounded-full transform -rotate-12 scale-90"></div>
+<div class="absolute inset-0 border border-purple-500/30 rounded-full transform rotate-12 scale-125"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full blur-md opacity-50"></div>
+<img alt="Abstract Galaxy Graphic" class="w-64 h-64 object-cover rounded-full relative z-10 mask-image-circle opacity-80 mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbP4KzJBxQj1QCMh4Khbn6sC7cfkdIw_moalAU6304RdHuZf3Ty401sv5Qcawam8hduj3R9eopinC4ARC3MBGhAQXnGaSvjC6Wcpw1vf25_K2CK2W-O7wLE8F6f_NXVNh3-B5lOkELOG2mDgCJWlQJIm86vIj7qO_THrY8sMk_ojJ1RVU6CGv1s8n-LBa_1_OAznfhRiGFpgBUtYxuBldo9JxWISsl8aXbCfvgdQi5xwAG88JiRVTEiKOUxjbFejrxv934oP7UOtU"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-gray-50 dark:bg-[#0d0d14] px-4" id="skills">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-display font-bold mb-2">
+<span class="text-primary neon-text">Skills</span> &amp; <span class="text-secondary neon-text-pink">Technologies</span>
+</h2>
+<p class="text-gray-500 text-sm mt-4 italic">Technologies &amp; tools I use to craft modern web experiences</p>
+</div>
+<div class="mb-12">
+<h3 class="text-2xl font-display font-bold text-center mb-8 text-primary">Frontend</h3>
+<div class="flex flex-wrap justify-center gap-6">
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
+<span class="font-bold text-sm">HTML5</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fab fa-css3-alt text-4xl text-blue-500 mb-3"></i>
+<span class="font-bold text-sm">CSS3</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fab fa-js text-4xl text-yellow-400 mb-3"></i>
+<span class="font-bold text-sm">JavaScript</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<img alt="Tailwind" class="w-10 h-10 mb-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgezSaQrj97mcCpXCr6koXHU-MZAqM2BPJ8zEE_EjmY0u8lQbbuTIbTM4Gwleam7mTQ3cpnDmAlZXvIHwnkWyN4YFBlpcmnDBeah0ZAW--tAtIpHqlNePgJKCDNGdXejjVHyNnW-JnFVblS7hxQGUtjrndCE0Q8o_Re4Zifty5dM9sNOB4TQcyMnQ_-qEYD6b833oCst1Gy2T1SXMcPy28aSjH3plM-UY3k3hVpXycVdui-QXOrnNbt2o5vg5YCGGLL0FkenbOtHw"/>
+<span class="font-bold text-sm">Tailwind</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fab fa-react text-4xl text-cyan-400 mb-3"></i>
+<span class="font-bold text-sm">React</span>
+</div>
+</div>
+</div>
+<div class="mb-12">
+<h3 class="text-2xl font-display font-bold text-center mb-8 text-primary">Backend</h3>
+<div class="flex flex-wrap justify-center gap-6">
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fab fa-node text-4xl text-green-500 mb-3"></i>
+<span class="font-bold text-sm">Node.js</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-server text-4xl text-gray-500 mb-3"></i>
+<span class="font-bold text-sm">Express.js</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-database text-4xl text-green-400 mb-3"></i>
+<span class="font-bold text-sm">MongoDB</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-lock text-4xl text-pink-500 mb-3"></i>
+<span class="font-bold text-sm">JWT</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-32 h-32 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-fire text-4xl text-orange-400 mb-3"></i>
+<span class="font-bold text-sm">Firebase</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-display font-bold text-center mb-8 text-primary">Tools</h3>
+<div class="flex flex-wrap justify-center gap-6">
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-28 h-28 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fab fa-git-alt text-3xl text-red-500 mb-2"></i>
+<span class="font-bold text-xs">Git</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-28 h-28 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fab fa-github text-3xl text-gray-300 mb-2"></i>
+<span class="font-bold text-xs">GitHub</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-28 h-28 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-code text-3xl text-blue-400 mb-2"></i>
+<span class="font-bold text-xs">VS Code</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-28 h-28 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-rocket text-3xl text-orange-500 mb-2"></i>
+<span class="font-bold text-xs">Postman</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-28 h-28 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-terminal text-3xl text-white mb-2"></i>
+<span class="font-bold text-xs">Nodemon</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-28 h-28 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-triangle-circle-square text-3xl text-white mb-2"></i>
+<span class="font-bold text-xs">Vercel</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-28 h-28 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fas fa-cloud text-3xl text-teal-400 mb-2"></i>
+<span class="font-bold text-xs">Netlify</span>
+</div>
+<div class="skill-card bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-white/10 w-28 h-28 flex flex-col items-center justify-center transition-all duration-300">
+<i class="fab fa-figma text-3xl text-pink-500 mb-2"></i>
+<span class="font-bold text-xs">Figma</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 px-4" id="projects">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-display font-bold mb-2">
+<span class="text-primary neon-text">Featured</span> <span class="text-secondary neon-text-pink">Projects</span>
+</h2>
+<div class="h-1 w-32 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<article class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 group flex flex-col h-full">
+<div class="h-48 overflow-hidden relative">
+<img alt="BookCourier Project Screenshot" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChCkmg0U2iLzaIcnfMwcq-iuzR8n2F66FST1s9hbujSE1bsDBDIbnQmNbAPf8c-gh-_AQ8mLqlIFxiOSTHWgj673QTqyMC3lFtodwcFM3Upzm8On_4N0-_NiA0T5qElrQ1RLZAzJzIFSadlUOtJ4RIS_aR_8dozjrhqcW71jwNRupExoET4ZVfOobT-Es18UarKwg7er3uiyr7A1BkUQm2wua58RqV7KCk6RBBypmN9e2PoM4lUAl05SYYReHUrZdYhyJD9wX0aNI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">BookCourier – Library-to-Home Delivery System</h3>
+<p class="text-gray-500 text-sm mb-4 flex-grow">
+                                BookCourier is a modern, user-friendly library delivery management system designed to revolutionize how people access books. Our platform enables students, researchers, and general readers to request book pickups or deliveries easily.
+                            </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">HTML</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Tailwind</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Daisy UI</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">React</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Firebase</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">MongoDB</span>
+</div>
+<div class="mt-auto flex gap-4">
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fab fa-github"></i> Code</a>
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fas fa-external-link-alt"></i> Live</a>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 group flex flex-col h-full">
+<div class="h-48 overflow-hidden relative">
+<img alt="Habit Tracker Project Screenshot" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeVKR0HQ8egX_SjTX4scFabZMv10U0IP1QfIa3_eLaASqPAZHBhC0HYu5DoIerKgHsUGw_nMMdoWCKpi8ljsWyje4-blUCBP6oxKXK58k0dUxnZVNEc8WehG2fdvLbDLe9HsAEwxCjIPbKnMAT23vtTx2A_8dtk7kOft9AnrvcD4-J4uQ-RoI7yxiBFl4wFfZjhYnkcLuk8hEqUm3wcfrZlzaLVXN-Q3IleMLW7HKVsPOjA3igyrQGXS5H9vRsNpT3Kc3U6Gp7Qfg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">Daily Progress Habit_Tracker 🎯</h3>
+<p class="text-gray-500 text-sm mb-4 flex-grow">
+                                Habit_Tracker is an advanced habit tracking platform that helps users track daily progress, build streaks, and increase productivity. It offers secure Firebase Authentication, CRUD functionality for adding/editing habits, and progress visualization.
+                            </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">React</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Firebase</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Tailwind</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Express JS</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">MongoDB</span>
+</div>
+<div class="mt-auto flex gap-4">
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fab fa-github"></i> Code</a>
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fas fa-external-link-alt"></i> Live</a>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 group flex flex-col h-full">
+<div class="h-48 overflow-hidden relative">
+<img alt="ToyLand Project Screenshot" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjmqxAykMAzq3vP2tMKEsw5nljw0h3yveIszf3q1b9DSHM6cbMVER6V8qRXq6Ifm5WFCf7x_r2V4UiiecKHt-PPHLqDPPyd6CHG1AxiZA-LAzo_nUwwLzSvpsYAQmVpshvj4Dc9_uu14qkvmoWc5Qa5X7LIUTjjKajrIeEy-sEo6DIN20MWaOuU2r_-YxFyiXna41pHA1SN9W0jTpQJUZDUyDZ8_NRHdsThcIJHHRVRAWTgZw1DWkMP5E7bXi2csEBIaV5HmfjdQM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">ToyLand 🧸 Project with Firebase Auth</h3>
+<p class="text-gray-500 text-sm mb-4 flex-grow">
+                                ToyLand - A feature-rich platform centered on Firebase Authentication (Sign-in, Sign-up, Google Sign-in). Users can browse the Toy Blog, view detailed Toy Cards, and manage their account on the My Profile page.
+                           </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">React</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Firebase</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Tailwind</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Daisy UI</span>
+</div>
+<div class="mt-auto flex gap-4">
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fab fa-github"></i> Code</a>
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fas fa-external-link-alt"></i> Live</a>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 group flex flex-col h-full">
+<div class="h-48 overflow-hidden relative">
+<img alt="TreeStore Project Screenshot" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASo7x8Ix5boiYvYVceaUkfZ4zD2A544DmvarUA5WlN0O798KGwJ3g2uaorAz3xlijv9-oMPsplFBWEC-159wqLO9VWT423fDJoj-GQXLrmhRh8Buq-sxtz9UiOCtEhJQqcYpMZFg6BpDfR-h2u78iUM5Tuhp_FHcO_Xj69O4-LG4HbiNYyb8D5dhyTlV2ipIDWBZXCqgzPOwOclmHie_K_GkvCY_NmyR1qgoiit1LBzFrtG-B2qowVMELClmO77iVIuRQqB-gWOTo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">TreeStore 🌳 Project with API</h3>
+<p class="text-gray-500 text-sm mb-4 flex-grow">
+                               TreeStore - an API-powered eCommerce platform for exploring plant collections with seamless add-to-cart functionality and a clean, responsive design.
+                           </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">HTML</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Tailwind</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">JS</span>
+</div>
+<div class="mt-auto flex gap-4">
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fab fa-github"></i> Code</a>
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fas fa-external-link-alt"></i> Live</a>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 group flex flex-col h-full">
+<div class="h-48 overflow-hidden relative">
+<img alt="AppStore Project Screenshot" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdPcGbpuMKO034uLkLupoYjkQTcrxnO9woz0CKTjmR3WVI4_eyflijnU9MRU3n_qw7kAhfbXkg-mcAU0b3s11wEmVWfC7DLcnMOMAeizQU_Y1NT8MTakI-zsw9Gemu3x747BxS8VH3VqTQcmraeYXjNu1PvMhoBN5PERiEa4mD3VEfP6YcMeJEhoImIPONGRePflOm3Uk_nUy6cWOjU2C_R9etnQiRMDvcwKn6oQXhhzWFLItKA9j3xQI6M1vxtSHfC13xCwPNUzI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">AppStore 📱: API, Install, Uninstall</h3>
+<p class="text-gray-500 text-sm mb-4 flex-grow">
+                                AppStore 📱: API, Install, Uninstall is an API-powered private platform. Here, visitors can easily search, install, and uninstall apps. Installed apps are saved in a dedicated "Installation" option.
+                           </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">HTML</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Tailwind</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">React</span>
+</div>
+<div class="mt-auto flex gap-4">
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fab fa-github"></i> Code</a>
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fas fa-external-link-alt"></i> Live</a>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 group flex flex-col h-full">
+<div class="h-48 overflow-hidden relative">
+<img alt="SupportHub Project Screenshot" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzJ-AC8nBJIySB488za_uu_vLloOhBQAQnrq4-kJaUwgV6oFPHddSeThOMrDWCNSIrNzsW5a0wWKsX2iNt7kNEqtCoBwqNLwtvRgoqbzcgHXUvvlZ9mwF7jedy772jw3sFhusr1LkEc80PoAizrdHL1UXTrnqg0gWU28JrmgmEcELvqNUPe9JBAtUeLb1QLn86z3XN_0Wwvnpqxzjoy12E8xnJS5tj_DOesmgfvaYC1Ki-3rQxXeqAIjfZZcWdHycVqgyCf2vew8M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">SupportHub</h3>
+<p class="text-gray-500 text-sm mb-4 flex-grow">
+                                SupportHub is a customer support or helpdesk system. Its main function is to organize and track all the problems or requests (called Tickets) of customers or users in a central place.
+                           </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">HTML</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">CSS</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">Tailwind</span>
+<span class="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">React</span>
+</div>
+<div class="mt-auto flex gap-4">
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fab fa-github"></i> Code</a>
+<a class="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1" href="#"><i class="fas fa-external-link-alt"></i> Live</a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="py-20 bg-gray-50 dark:bg-black/40 px-4 relative overflow-hidden" id="contact">
+<div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 z-0"></div>
+<div class="max-w-6xl mx-auto relative z-10">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-display font-bold mb-2">
+<span class="text-primary neon-text">Let's</span> <span class="text-secondary neon-text-pink">Connect</span>
+</h2>
+<div class="h-1 w-24 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mt-2"></div>
+</div>
+<div class="grid md:grid-cols-2 gap-12 items-start">
+<div class="space-y-6">
+<div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-gray-200 dark:border-white/10 flex items-center space-x-6 hover:border-primary/50 transition-colors">
+<div class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center text-primary text-2xl">
+<i class="fas fa-envelope"></i>
+</div>
+<div>
+<h4 class="font-display font-bold text-lg mb-1">Email</h4>
+<p class="text-gray-500 text-sm">rifat240590@gmail.com</p>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-gray-200 dark:border-white/10 flex items-center space-x-6 hover:border-primary/50 transition-colors">
+<div class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center text-primary text-2xl">
+<i class="fas fa-phone-alt"></i>
+</div>
+<div>
+<h4 class="font-display font-bold text-lg mb-1">Phone</h4>
+<p class="text-gray-500 text-sm">+8801726029618</p>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-gray-200 dark:border-white/10 flex items-center space-x-6 hover:border-primary/50 transition-colors">
+<div class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center text-primary text-2xl">
+<i class="fas fa-map-marker-alt"></i>
+</div>
+<div>
+<h4 class="font-display font-bold text-lg mb-1">Location</h4>
+<p class="text-gray-500 text-sm">Jessore, Khulna, Bangladesh</p>
+</div>
+</div>
+<div class="flex space-x-4 pt-4">
+<a class="w-12 h-12 rounded-full bg-card-dark border border-white/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all text-xl" href="#"><i class="fab fa-github"></i></a>
+<a class="w-12 h-12 rounded-full bg-card-dark border border-white/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all text-xl" href="#"><i class="fab fa-linkedin-in"></i></a>
+<a class="w-12 h-12 rounded-full bg-card-dark border border-white/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all text-xl" href="#"><i class="fab fa-twitter"></i></a>
+<a class="w-12 h-12 rounded-full bg-card-dark border border-white/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all text-xl" href="#"><i class="fab fa-facebook-f"></i></a>
+</div>
+</div>
+<form class="bg-white dark:bg-card-dark p-8 rounded-3xl border border-gray-200 dark:border-white/10 space-y-4 shadow-2xl relative">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl -z-10"></div>
+<div>
+<label class="block text-sm font-medium mb-1 text-gray-500">Your Name</label>
+<input class="w-full bg-gray-50 dark:bg-black/30 border border-gray-300 dark:border-white/10 rounded-lg p-3 focus:outline-none focus:border-primary text-gray-800 dark:text-gray-200" placeholder="John Doe" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-gray-500">Your Email</label>
+<input class="w-full bg-gray-50 dark:bg-black/30 border border-gray-300 dark:border-white/10 rounded-lg p-3 focus:outline-none focus:border-primary text-gray-800 dark:text-gray-200" placeholder="john@example.com" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-gray-500">Subject</label>
+<input class="w-full bg-gray-50 dark:bg-black/30 border border-gray-300 dark:border-white/10 rounded-lg p-3 focus:outline-none focus:border-primary text-gray-800 dark:text-gray-200" placeholder="Project Inquiry" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-gray-500">Your Message</label>
+<textarea class="w-full bg-gray-50 dark:bg-black/30 border border-gray-300 dark:border-white/10 rounded-lg p-3 focus:outline-none focus:border-primary text-gray-800 dark:text-gray-200" placeholder="Tell me about your project..." rows="4"></textarea>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2" type="button">
+<i class="fas fa-paper-plane"></i> SEND MESSAGE
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-black py-8 border-t border-gray-200 dark:border-white/10 text-center">
+<p class="text-gray-500 text-sm">
+            © 2023 Rifaituzzaman. All rights reserved.<br/>
+            Designed and developed by me with <span class="text-red-500">❤</span> and clean code.
+        </p>
+</footer>
+<script>
+        // Simple dark mode toggle logic for demonstration
+        const btn = document.querySelector('button');
+        const html = document.querySelector('html');
+        btn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+        });
+        // Add dark class by default for the "neon" vibe initially requested
+        html.classList.add('dark');
+    </script>
+
+</body></html>
