@@ -136,24 +136,100 @@ const Hero = () => {
       
       <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
         <motion.div className="mb-8" variants={containerVariants}>
-          <motion.h1 
-            className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight"
+          {/* Logo and Title Section */}
+          <motion.div 
+            className="flex flex-col items-center mb-8"
             variants={titleVariants}
           >
-            <motion.span 
-              className="text-white neon-text block"
+            {/* Large Avatar Logo */}
+            <motion.div 
+              className="mb-6"
+              variants={nameVariants}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+            >
+              <div className="relative">
+                <motion.img
+                  src={require('../assets/sourov-dash.png')}
+                  alt="Sourov Dash Logo"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-primary/50 shadow-2xl"
+                  animate={{
+                    boxShadow: [
+                      "0 0 20px rgba(6, 182, 212, 0.3)",
+                      "0 0 40px rgba(6, 182, 212, 0.6)",
+                      "0 0 20px rgba(6, 182, 212, 0.3)"
+                    ],
+                    transition: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                />
+                {/* Rotating Ring */}
+                <motion.div 
+                  className="absolute inset-0 border-2 border-secondary/30 rounded-full"
+                  animate={{
+                    rotate: 360,
+                    transition: {
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }
+                  }}
+                />
+                {/* Pulsing Glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-xl animate-pulse"></div>
+              </div>
+            </motion.div>
+            
+            {/* Title with Logo Icon */}
+            <motion.h1 
+              className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight"
               variants={titleVariants}
             >
-              Hello, I'm
-            </motion.span>
-            <motion.span 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent-pink text-6xl md:text-8xl block"
-              variants={nameVariants}
-              whileHover={{ scale: 1.05 }}
-            >
-              SOUROV DASH
-            </motion.span>
-          </motion.h1>
+              <motion.div 
+                className="flex items-center justify-center gap-4 mb-4"
+                variants={titleVariants}
+              >
+                <motion.i 
+                  className="fas fa-code text-primary text-3xl md:text-4xl"
+                  animate={{
+                    rotate: [0, 10, -10, 0],
+                    transition: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
+                  }}
+                />
+                <motion.span 
+                  className="text-white neon-text"
+                  variants={titleVariants}
+                >
+                  Hello, I'm
+                </motion.span>
+                <motion.i 
+                  className="fas fa-laptop-code text-secondary text-3xl md:text-4xl"
+                  animate={{
+                    rotate: [0, -10, 10, 0],
+                    transition: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 2
+                    }
+                  }}
+                />
+              </motion.div>
+              <motion.span 
+                className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent-pink text-6xl md:text-8xl block"
+                variants={nameVariants}
+                whileHover={{ scale: 1.05 }}
+              >
+                SOUROV DASH
+              </motion.span>
+            </motion.h1>
+          </motion.div>
           
           <motion.div 
             className="text-xl md:text-2xl text-white/90 mb-8 font-medium"

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import portfolioImage from '../assets/sourov-dash.png';
+import portfolioImage from '../assets/sourov.png';
 
 const About = () => {
   const ref = useRef(null);
@@ -266,25 +266,39 @@ const About = () => {
                 }}
               />
               
-              {/* Profile Image */}
+              {/* Enhanced Profile Image with sourov.png */}
               <motion.div 
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl bg-gradient-to-br from-primary/20 to-secondary/20"
-                whileHover={{ scale: 1.05 }}
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl bg-gradient-to-br from-primary/10 to-secondary/10 group"
+                whileHover={{ scale: 1.05, rotate: 2 }}
                 transition={{ duration: 0.3 }}
               >
                 <motion.img 
-                  alt="Sourov Dash - Full Stack Developer Portfolio" 
-                  className="w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-all duration-300" 
+                  alt="Sourov Dash - Full Stack Developer" 
+                  className="w-full h-full object-cover object-center hover:scale-110 transition-all duration-500 group-hover:brightness-110" 
                   src={portfolioImage}
                   onError={(e) => {
+                    console.log('Image failed to load:', e.target.src);
                     e.target.style.display = 'none';
                   }}
                   initial={{ scale: 1.2, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 0.9 } : { scale: 1.2, opacity: 0 }}
+                  animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.2, opacity: 0 }}
                   transition={{ duration: 1, ease: "easeOut" }}
                 />
-                {/* Overlay gradient for better integration */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-secondary/10 opacity-30"></div>
+                {/* Enhanced overlay with better visual integration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 group-hover:from-primary/10 group-hover:to-secondary/10 transition-all duration-300"></div>
+                
+                {/* Animated border glow */}
+                <motion.div 
+                  className="absolute inset-0 rounded-full border-2 border-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  animate={{
+                    rotate: 360,
+                    transition: {
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }
+                  }}
+                />
               </motion.div>
               
               {/* Floating Tech Icons */}

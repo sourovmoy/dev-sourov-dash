@@ -51,28 +51,49 @@ const Header = ({ darkMode, toggleDarkMode }) => {
       animate="visible"
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo with Avatar */}
+        {/* Enhanced Logo with Avatar */}
         <motion.div 
-          className="flex items-center space-x-3 cursor-pointer group"
+          className="flex items-center space-x-4 cursor-pointer group"
           variants={logoVariants}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          {/* Circular Avatar with Glow */}
-          <Avatar 
-            size="medium"
-            showGlow={true}
-            showBorder={true}
-            className="group-hover:rotate-3 transition-transform duration-300"
-          />
+          {/* Circular Avatar with Enhanced Glow */}
+          <div className="relative">
+            <Avatar 
+              size="large"
+              showGlow={true}
+              showBorder={true}
+              className="group-hover:rotate-6 transition-all duration-500 shadow-lg group-hover:shadow-primary/30"
+            />
+            {/* Additional glow ring */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+          </div>
           
-          {/* Brand Text */}
+          {/* Enhanced Brand Text with Logo Icon */}
           <motion.div 
-            className="font-display font-bold text-xl text-primary neon-text tracking-wider group-hover:text-secondary transition-colors duration-300"
+            className="flex flex-col"
             whileHover={{ scale: 1.02 }}
           >
-            SOUROV DASH
+            <div className="flex items-center space-x-2">
+              {/* Code Icon */}
+              <i className="fas fa-code text-primary text-lg group-hover:text-secondary transition-colors duration-300"></i>
+              
+              {/* Brand Name */}
+              <span className="font-display font-bold text-xl text-primary neon-text tracking-wider group-hover:text-secondary transition-colors duration-300">
+                SOUROV DASH
+              </span>
+            </div>
+            
+            {/* Subtitle */}
+            <motion.span 
+              className="text-xs text-gray-600 dark:text-gray-400 font-mono tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              initial={{ opacity: 0, y: -5 }}
+              whileHover={{ opacity: 1, y: 0 }}
+            >
+              MERN Stack Developer
+            </motion.span>
           </motion.div>
         </motion.div>
         
