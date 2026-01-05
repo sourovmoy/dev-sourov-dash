@@ -277,6 +277,7 @@ const About = () => {
                   className="w-full h-full object-cover object-center hover:scale-110 transition-all duration-500 group-hover:brightness-110" 
                   src={portfolioImage}
                   onError={(e) => {
+                    // eslint-disable-next-line no-console
                     console.log('Image failed to load:', e.target.src);
                     e.target.style.display = 'none';
                   }}

@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.js": "./static/js/main.bdb90dcc.js",
+    "main.js": "./static/js/main.012cc248.js",
     "static/media/community-cleanliness-issues-report.netlify.app.png": "./static/media/community-cleanliness-issues-report.netlify.app.7451c37c30f67bd5c65e.png",
     "static/media/sourov-green-nest.netlify.app_.png": "./static/media/sourov-green-nest.netlify.app_.0a0e5fb390a61a992849.png",
     "static/media/digital-life-lessons-to-learn.netlify.app_ (1).png": "./static/media/digital-life-lessons-to-learn.netlify.app_ (1).c180986608049f144d8b.png",
     "static/media/hero-apps-oi.netlify.app_.png": "./static/media/hero-apps-oi.netlify.app_.1f9d1b2bb1dfb605fecf.png",
     "static/media/sourov-green-earth.netlify.app_.png": "./static/media/sourov-green-earth.netlify.app_.a7ee810ec21391261fc1.png",
-    "static/media/149400531___n-removebg-preview.png": "./static/media/149400531_2863964833880191_365399902058522801_n-removebg-preview.e1cf3ac4126d9f557c16.png",
+    "static/media/sourov.png": "./static/media/sourov.e1cf3ac4126d9f557c16.png",
+    "static/media/sourov-dash.png": "./static/media/sourov-dash.676d46f7b1f89b3cb0d9.png",
     "index.html": "./index.html",
-    "main.bdb90dcc.js.map": "./static/js/main.bdb90dcc.js.map"
+    "main.012cc248.js.map": "./static/js/main.012cc248.js.map"
   },
   "entrypoints": [
-    "static/js/main.bdb90dcc.js"
+    "static/js/main.012cc248.js"
   ]
 }
