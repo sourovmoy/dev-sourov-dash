@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "./static/js/main.4c33b94c.js",
+    "main.js": "./static/js/main.23a0a85a.js",
     "static/media/community-cleanliness-issues-report.netlify.app.png": "./static/media/community-cleanliness-issues-report.netlify.app.7451c37c30f67bd5c65e.png",
     "static/media/sourov-green-nest.netlify.app_.png": "./static/media/sourov-green-nest.netlify.app_.0a0e5fb390a61a992849.png",
     "static/media/digital-life-lessons-to-learn.netlify.app_ (1).png": "./static/media/digital-life-lessons-to-learn.netlify.app_ (1).c180986608049f144d8b.png",
@@ -9,9 +9,9 @@
     "static/media/sourov.png": "./static/media/sourov.e1cf3ac4126d9f557c16.png",
     "static/media/sourov-dash.png": "./static/media/sourov-dash.676d46f7b1f89b3cb0d9.png",
     "index.html": "./index.html",
-    "main.4c33b94c.js.map": "./static/js/main.4c33b94c.js.map"
+    "main.23a0a85a.js.map": "./static/js/main.23a0a85a.js.map"
   },
   "entrypoints": [
-    "static/js/main.4c33b94c.js"
+    "static/js/main.23a0a85a.js"
   ]
 }

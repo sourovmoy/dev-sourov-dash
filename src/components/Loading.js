@@ -1,485 +1,277 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 
-const Loading = ({ 
-  loading = false, 
-  type = 'spinner', 
-  size = 'medium', 
-  overlay = false,
-  text = '',
-  color = 'primary'
+/**
+ * Full-Page Landing Loader Component
+ * A modern, animated progress bar loader that covers the entire viewport
+ * 
+ * @param {boolean} loading - Whether to show the loader (default: true)
+ * @param {number} duration - Total time to reach 100% in milliseconds (default: 3000)
+ * @param {string} backgroundColor - Background color of the loader page (default: '#ffffff')
+ * @param {string} progressBg - Background color of the progress bar (default: '#e5e7eb')
+ * @param {string} progressFill - Fill color of the progress bar (default: '#3b82f6')
+ * @param {string} textColor - Color of the percentage text (default: '#374151')
+ * @param {boolean} gradient - Use gradient fill instead of solid color (default: false)
+ * @param {string} gradientFrom - Gradient start color (default: '#3b82f6')
+ * @param {string} gradientTo - Gradient end color (default: '#1d4ed8')
+ * @param {function} onComplete - Callback function when loading reaches 100%
+ * @param {string} title - Title text to display (default: 'Loading...')
+ * @param {string} subtitle - Subtitle text to display (optional)
+ */
+const Loading = ({
+  loading = true,
+  duration = 3000,
+  backgroundColor = '#ffffff',
+  progressBg = '#e5e7eb',
+  progressFill = '#3b82f6',
+  textColor = '#374151',
+  gradient = false,
+  gradientFrom = '#3b82f6',
+  gradientTo = '#1d4ed8',
+  onComplete = null,
+  title = 'Loading...',
+  subtitle = ''
 }) => {
+  // State to track current progress percentage (0-100)
+  const [progress, setProgress] = useState(0);
+  
+  // State to control fade out animation
+  const [isVisible, setIsVisible] = useState(true);
+  
+  // State to track if loading is complete
+  const [isComplete, setIsComplete] = useState(false);
+
+  /**
+   * Effect to animate progress from 0% to 100%
+   * Uses requestAnimationFrame for smooth 60fps animation
+   */
+  useEffect(() => {
+    if (!loading) {
+      return;
+    }
+
+    let startTime = null;
+    let animationFrame = null;
+
+    /**
+     * Animation function that updates progress based on elapsed time
+     * Uses easeOutQuart for smooth deceleration towards the end
+     */
+    const animate = (currentTime) => {
+      if (startTime === null) {
+        startTime = currentTime;
+      }
+
+      // Calculate elapsed time as a percentage of total duration
+      const elapsed = currentTime - startTime;
+      const progressRatio = Math.min(elapsed / duration, 1);
+
+      // Apply easing function for smooth animation (easeOutQuart)
+      const easedProgress = 1 - Math.pow(1 - progressRatio, 4);
+      
+      // Calculate current percentage (0% to 100%)
+      const currentProgress = Math.round(easedProgress * 100);
+      
+      setProgress(currentProgress);
+
+      // Continue animation if not complete
+      if (progressRatio < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        // Animation complete
+        setIsComplete(true);
+        
+        // Start fade out after a brief delay
+        setTimeout(() => {
+          setIsVisible(false);
+          
+          // Call onComplete callback
+          if (onComplete && typeof onComplete === 'function') {
+            onComplete();
+          }
+        }, 500); // Brief pause at 100% before calling onComplete
+      }
+    };
+
+    // Start the animation
+    animationFrame = requestAnimationFrame(animate);
+
+    // Cleanup function to cancel animation on unmount or loading change
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [loading, duration, onComplete]);
+
+  // Don't render anything if not loading and fade out is complete
+  if (!loading && !isVisible) return null;
+  
+  // Also don't render if loading is false initially
   if (!loading) return null;
 
-  // Size configurations
-  const sizeConfig = {
-    small: {
-      spinner: 'w-8 h-8',
-      dots: 'w-2 h-2',
-      pulse: 'w-10 h-10',
-      text: 'text-sm',
-      container: 'p-4'
-    },
-    medium: {
-      spinner: 'w-12 h-12',
-      dots: 'w-3 h-3',
-      pulse: 'w-16 h-16',
-      text: 'text-base',
-      container: 'p-6'
-    },
-    large: {
-      spinner: 'w-20 h-20',
-      dots: 'w-4 h-4',
-      pulse: 'w-24 h-24',
-      text: 'text-lg',
-      container: 'p-8'
-    }
+  /**
+   * Dynamic styles for the loader
+   */
+  const loaderStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: backgroundColor,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 9999,
+    opacity: isVisible ? 1 : 0,
+    transition: 'opacity 0.5s ease-out',
+    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
   };
 
-  // Enhanced color configurations with gradients
-  const colorConfig = {
-    primary: {
-      gradient: 'from-primary via-cyan-400 to-blue-500',
-      glow: 'shadow-primary/50',
-      text: 'text-primary',
-      bg: 'bg-primary'
-    },
-    secondary: {
-      gradient: 'from-secondary via-pink-400 to-purple-500',
-      glow: 'shadow-secondary/50',
-      text: 'text-secondary',
-      bg: 'bg-secondary'
-    },
-    rainbow: {
-      gradient: 'from-red-400 via-yellow-400 via-green-400 via-blue-400 to-purple-400',
-      glow: 'shadow-purple-500/50',
-      text: 'text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-purple-400',
-      bg: 'bg-gradient-to-r from-red-400 to-purple-400'
-    },
-    neon: {
-      gradient: 'from-cyan-400 via-green-400 to-lime-400',
-      glow: 'shadow-cyan-400/50',
-      text: 'text-cyan-400',
-      bg: 'bg-cyan-400'
-    }
+  const contentStyle = {
+    textAlign: 'center',
+    width: '100%',
+    maxWidth: '500px'
   };
 
-  const config = sizeConfig[size];
-  const colors = colorConfig[color];
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1,
-      scale: 1,
-      transition: { 
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    },
-    exit: { 
-      opacity: 0,
-      scale: 0.8,
-      transition: { duration: 0.3 }
-    }
+  const titleStyle = {
+    fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+    fontWeight: '700',
+    color: textColor,
+    marginBottom: '0.5rem',
+    letterSpacing: '-0.025em'
   };
 
-  // Enhanced spinner with gradient and glow
-  const renderSpinner = () => (
-    <div className="relative">
-      {/* Outer glow ring */}
-      <motion.div
-        className={`absolute inset-0 ${config.spinner} rounded-full bg-gradient-to-r ${colors.gradient} opacity-20 blur-md`}
-        animate={{
-          rotate: 360,
-          scale: [1, 1.2, 1],
-          transition: {
-            rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-            scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-          }
-        }}
-      />
-      
-      {/* Main spinner */}
-      <motion.div
-        className={`${config.spinner} border-4 border-transparent bg-gradient-to-r ${colors.gradient} rounded-full p-1`}
-        animate={{
-          rotate: 360,
-          transition: { duration: 1, repeat: Infinity, ease: "linear" }
-        }}
-      >
-        <div className="w-full h-full bg-white dark:bg-gray-900 rounded-full"></div>
-      </motion.div>
-      
-      {/* Inner spinning dot */}
-      <motion.div
-        className={`absolute top-1 left-1/2 w-2 h-2 ${colors.bg} rounded-full transform -translate-x-1/2`}
-        animate={{
-          rotate: 360,
-          transition: { duration: 1, repeat: Infinity, ease: "linear" }
-        }}
-      />
-    </div>
-  );
-
-  // Enhanced dots with wave effect
-  const renderDots = () => (
-    <div className="flex space-x-2">
-      {[0, 1, 2, 3, 4].map((index) => (
-        <motion.div
-          key={index}
-          className={`${config.dots} rounded-full bg-gradient-to-r ${colors.gradient} shadow-lg ${colors.glow}`}
-          animate={{
-            y: [0, -20, 0],
-            scale: [1, 1.2, 1],
-            opacity: [0.7, 1, 0.7],
-            transition: {
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: index * 0.2
-            }
-          }}
-        />
-      ))}
-    </div>
-  );
-
-  // Enhanced pulse with multiple rings
-  const renderPulse = () => (
-    <div className="relative flex items-center justify-center">
-      {[0, 1, 2].map((index) => (
-        <motion.div
-          key={index}
-          className={`absolute ${config.pulse} rounded-full bg-gradient-to-r ${colors.gradient} opacity-30`}
-          animate={{
-            scale: [0, 2],
-            opacity: [0.6, 0],
-            transition: {
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeOut",
-              delay: index * 0.6
-            }
-          }}
-        />
-      ))}
-      <motion.div
-        className={`${config.pulse} rounded-full bg-gradient-to-r ${colors.gradient} shadow-2xl ${colors.glow}`}
-        animate={{
-          scale: [1, 1.1, 1],
-          transition: {
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }
-        }}
-      />
-    </div>
-  );
-
-  // Enhanced bars with gradient
-  const renderBars = () => (
-    <div className="flex items-end space-x-1">
-      {[0, 1, 2, 3, 4, 5, 6].map((index) => (
-        <motion.div
-          key={index}
-          className={`w-2 bg-gradient-to-t ${colors.gradient} rounded-full shadow-lg`}
-          style={{ height: '8px' }}
-          animate={{
-            scaleY: [1, 3, 1],
-            opacity: [0.5, 1, 0.5],
-            transition: {
-              duration: 1.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: index * 0.1
-            }
-          }}
-        />
-      ))}
-    </div>
-  );
-
-  // Enhanced ripple with gradient
-  const renderRipple = () => (
-    <div className="relative">
-      {[0, 1, 2].map((index) => (
-        <motion.div
-          key={index}
-          className={`absolute inset-0 ${config.pulse} border-4 border-gradient-to-r ${colors.gradient} rounded-full opacity-60`}
-          style={{
-            borderImage: `linear-gradient(45deg, #06b6d4, #d946ef) 1`
-          }}
-          animate={{
-            scale: [0, 2],
-            opacity: [0.8, 0],
-            transition: {
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeOut",
-              delay: index * 1
-            }
-          }}
-        />
-      ))}
-    </div>
-  );
-
-  // Enhanced code loader with floating elements
-  const renderCodeLoader = () => (
-    <div className="relative flex flex-col items-center space-y-4">
-      {/* Floating code symbols */}
-      <div className="relative">
-        {['<', '>', '{', '}', '/', '*'].map((symbol, index) => (
-          <motion.span
-            key={index}
-            className={`absolute text-2xl font-mono font-bold ${colors.text} opacity-30`}
-            style={{
-              left: `${Math.cos(index * 60 * Math.PI / 180) * 40}px`,
-              top: `${Math.sin(index * 60 * Math.PI / 180) * 40}px`
-            }}
-            animate={{
-              rotate: 360,
-              scale: [0.8, 1.2, 0.8],
-              opacity: [0.3, 0.8, 0.3],
-              transition: {
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: index * 0.5
-              }
-            }}
-          >
-            {symbol}
-          </motion.span>
-        ))}
-        
-        {/* Central code icon */}
-        <motion.div
-          className="relative z-10"
-          animate={{
-            rotate: [0, 360],
-            transition: {
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear"
-            }
-          }}
-        >
-          <motion.i 
-            className={`fas fa-code text-4xl ${colors.text} drop-shadow-lg`}
-            animate={{
-              scale: [1, 1.2, 1],
-              transition: {
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }}
-          />
-        </motion.div>
-      </div>
-      
-      {/* Animated brackets */}
-      <motion.div
-        className="flex items-center space-x-2"
-        animate={{
-          opacity: [0.5, 1, 0.5],
-          transition: {
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }
-        }}
-      >
-        {['<', 'dev', '/>'].map((char, index) => (
-          <motion.span
-            key={index}
-            className={`${colors.text} font-mono font-bold text-lg`}
-            animate={{
-              y: [0, -8, 0],
-              transition: {
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: index * 0.3
-              }
-            }}
-          >
-            {char}
-          </motion.span>
-        ))}
-      </motion.div>
-    </div>
-  );
-
-  // New beautiful orbital loader
-  const renderOrbital = () => (
-    <div className="relative">
-      {/* Orbital rings */}
-      {[0, 1, 2].map((ring) => (
-        <motion.div
-          key={ring}
-          className={`absolute border-2 border-dashed rounded-full opacity-30`}
-          style={{
-            width: `${60 + ring * 20}px`,
-            height: `${60 + ring * 20}px`,
-            left: `${-10 - ring * 10}px`,
-            top: `${-10 - ring * 10}px`,
-            borderColor: ring === 0 ? '#06b6d4' : ring === 1 ? '#d946ef' : '#10b981'
-          }}
-          animate={{
-            rotate: ring % 2 === 0 ? 360 : -360,
-            transition: {
-              duration: 4 + ring,
-              repeat: Infinity,
-              ease: "linear"
-            }
-          }}
-        />
-      ))}
-      
-      {/* Orbiting dots */}
-      {[0, 1, 2].map((dot) => (
-        <motion.div
-          key={dot}
-          className="absolute w-3 h-3 rounded-full shadow-lg"
-          style={{
-            background: dot === 0 ? '#06b6d4' : dot === 1 ? '#d946ef' : '#10b981'
-          }}
-          animate={{
-            rotate: dot % 2 === 0 ? 360 : -360,
-            transition: {
-              duration: 3 + dot,
-              repeat: Infinity,
-              ease: "linear"
-            }
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              left: `${25 + dot * 15}px`,
-              top: '50%',
-              transform: 'translateY(-50%)'
-            }}
-          />
-        </motion.div>
-      ))}
-      
-      {/* Center core */}
-      <motion.div
-        className={`w-8 h-8 rounded-full bg-gradient-to-r ${colors.gradient} shadow-xl ${colors.glow} mx-auto`}
-        animate={{
-          scale: [1, 1.3, 1],
-          boxShadow: [
-            '0 0 20px rgba(6, 182, 212, 0.5)',
-            '0 0 40px rgba(217, 70, 239, 0.8)',
-            '0 0 20px rgba(6, 182, 212, 0.5)'
-          ],
-          transition: {
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }
-        }}
-      />
-    </div>
-  );
-
-  const getLoadingAnimation = () => {
-    switch (type) {
-      case 'spinner':
-        return renderSpinner();
-      case 'dots':
-        return renderDots();
-      case 'pulse':
-        return renderPulse();
-      case 'bars':
-        return renderBars();
-      case 'ripple':
-        return renderRipple();
-      case 'code':
-        return renderCodeLoader();
-      case 'orbital':
-        return renderOrbital();
-      default:
-        return renderSpinner();
-    }
+  const subtitleStyle = {
+    fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)',
+    color: textColor,
+    opacity: 0.7,
+    marginBottom: '3rem',
+    fontWeight: '400'
   };
 
-  const containerClasses = overlay 
-    ? "fixed inset-0 bg-gradient-to-br from-black/60 via-gray-900/50 to-black/60 backdrop-blur-md z-50 flex items-center justify-center"
-    : "flex items-center justify-center p-4";
+  const progressContainerStyle = {
+    width: '100%',
+    marginBottom: '1.5rem'
+  };
+
+  const progressBarBgStyle = {
+    width: '100%',
+    height: '8px',
+    backgroundColor: progressBg,
+    borderRadius: '9999px',
+    overflow: 'hidden',
+    position: 'relative',
+    boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1)'
+  };
+
+  const progressBarFillStyle = {
+    height: '100%',
+    width: `${progress}%`,
+    background: gradient 
+      ? `linear-gradient(90deg, ${gradientFrom}, ${gradientTo})`
+      : progressFill,
+    borderRadius: '9999px',
+    transition: 'width 0.1s ease-out',
+    position: 'relative',
+    boxShadow: gradient 
+      ? `0 0 20px ${gradientFrom}40`
+      : `0 0 20px ${progressFill}40`
+  };
+
+  const percentageStyle = {
+    fontSize: 'clamp(2rem, 6vw, 4rem)',
+    fontWeight: '800',
+    color: gradient ? gradientTo : progressFill,
+    marginBottom: '1rem',
+    letterSpacing: '-0.05em',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+  };
+
+  const statusStyle = {
+    fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
+    color: textColor,
+    opacity: 0.6,
+    fontWeight: '500',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em'
+  };
+
+  // Shimmer effect for the progress bar
+  const shimmerStyle = {
+    position: 'absolute',
+    top: 0,
+    left: '-100%',
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent)',
+    animation: 'shimmer 2s infinite'
+  };
 
   return (
-    <AnimatePresence>
-      <motion.div
-        className={containerClasses}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <motion.div 
-          className={`flex flex-col items-center space-y-6 ${config.container} rounded-2xl ${overlay ? 'bg-white/10 dark:bg-gray-900/20 backdrop-blur-sm border border-white/20' : ''}`}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          {/* Loading animation */}
-          <div className="relative">
-            {getLoadingAnimation()}
+    <>
+      <div style={loaderStyle}>
+        <div style={contentStyle}>
+          {/* Title */}
+          <h1 style={titleStyle}>
+            {title}
+          </h1>
+          
+          {/* Subtitle (if provided) */}
+          {subtitle && (
+            <p style={subtitleStyle}>
+              {subtitle}
+            </p>
+          )}
+          
+          {/* Percentage Display */}
+          <div style={percentageStyle}>
+            {progress}%
           </div>
           
-          {/* Enhanced text with gradient */}
-          {text && (
-            <motion.div
-              className="text-center space-y-2"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <motion.p
-                className={`${config.text} font-semibold ${colors.text} drop-shadow-sm`}
-                animate={{
-                  opacity: [0.7, 1, 0.7],
-                  transition: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }
-                }}
-              >
-                {text}
-              </motion.p>
-              
-              {/* Animated dots after text */}
-              <motion.div className="flex justify-center space-x-1">
-                {[0, 1, 2].map((dot) => (
-                  <motion.div
-                    key={dot}
-                    className={`w-1 h-1 ${colors.bg} rounded-full`}
-                    animate={{
-                      opacity: [0.3, 1, 0.3],
-                      scale: [1, 1.5, 1],
-                      transition: {
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: dot * 0.2
-                      }
-                    }}
-                  />
-                ))}
-              </motion.div>
-            </motion.div>
-          )}
-        </motion.div>
-      </motion.div>
-    </AnimatePresence>
+          {/* Progress Bar Container */}
+          <div style={progressContainerStyle}>
+            <div style={progressBarBgStyle}>
+              <div style={progressBarFillStyle}>
+                {/* Shimmer Effect */}
+                <div style={shimmerStyle}></div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Status Text */}
+          <div style={statusStyle}>
+            {isComplete ? 'Complete!' : 'Please wait...'}
+          </div>
+        </div>
+      </div>
+
+      {/* CSS Animation for Shimmer Effect */}
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 100%;
+          }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+          .loader-content {
+            padding: 1rem;
+          }
+        }
+        
+        /* Smooth animations */
+        * {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      `}</style>
+    </>
   );
 };
 
