@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -9,10 +9,20 @@ const Contact = () => {
     message: ''
   });
 
+  
+
   // EmailJS Configuration - Loaded from environment variables
   const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
   const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
   const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+  // Update current time every second
+  useEffect(() => {
+    const timer = setInterval(() => {
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -29,6 +39,12 @@ const Contact = () => {
       alert('❌ EmailJS configuration is missing. Please check your .env file.');
       return;
     }
+
+    // Check if template ID is still placeholder
+    if (TEMPLATE_ID.includes('YOUR_TEMPLATE_ID_HERE')) {
+      alert('❌ Please update your REACT_APP_EMAILJS_TEMPLATE_ID in the .env file with your actual EmailJS template ID.');
+      return;
+    }
     
     try {
       // Send email using EmailJS
@@ -36,11 +52,20 @@ const Contact = () => {
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          name: formData.name,
+          email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          to_name: 'Sourov Dash', // Your name
+          time: new Date().toLocaleString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZoneName: 'short'
+          }),
         },
         PUBLIC_KEY
       );
@@ -52,8 +77,23 @@ const Contact = () => {
       setFormData({ name: '', email: '', subject: '', message: '' });
       
     } catch (error) {
-      // Show error message
-      alert('❌ Failed to send message. Please try again or contact me directly via email.');
+      // More detailed error handling
+      let errorMessage = '❌ Failed to send message. ';
+      
+      if (error.status === 400) {
+        errorMessage += 'Invalid template ID or service configuration.';
+      } else if (error.status === 401) {
+        errorMessage += 'Invalid public key or unauthorized access.';
+      } else if (error.status === 404) {
+        errorMessage += 'Template or service not found.';
+      } else {
+        errorMessage += 'Please try again or contact me directly via email.';
+      }
+      
+      alert(errorMessage);
+      
+      // Log error for debugging (remove in production)
+      console.error('EmailJS Error:', error);
     }
   };
 
@@ -194,6 +234,7 @@ const Contact = () => {
                 <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
                   Fill out the form below and I'll get back to you soon!
                 </p>
+              
               </div>
               
               <div className="grid md:grid-cols-2 gap-4">
