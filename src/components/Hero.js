@@ -88,7 +88,7 @@ const Hero = () => {
 
   return (
     <motion.section 
-      className="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden hero-gradient"
+      className="pt-24 sm:pt-28 lg:pt-32 min-h-screen flex items-center justify-center relative overflow-hidden hero-gradient"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
