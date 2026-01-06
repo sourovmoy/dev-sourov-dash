@@ -4,6 +4,7 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.23.27",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

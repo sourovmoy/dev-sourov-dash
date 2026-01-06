@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,11 @@ const Contact = () => {
     message: ''
   });
 
+  // EmailJS Configuration - Loaded from environment variables
+  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -15,16 +21,40 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here - integrate with your preferred service
-    // Example: emailjs, formspree, or netlify forms
     
-    // Reset form after submission
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    // Validate EmailJS configuration
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      alert('❌ EmailJS configuration is missing. Please check your .env file.');
+      return;
+    }
     
-    // Show success message (you can add a toast notification here)
-    alert('Thank you for your message! I will get back to you soon.');
+    try {
+      // Send email using EmailJS
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Sourov Dash', // Your name
+        },
+        PUBLIC_KEY
+      );
+
+      // Show success message
+      alert('✅ Thank you for your message! I will get back to you soon.');
+      
+      // Reset form after successful submission
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+    } catch (error) {
+      // Show error message
+      alert('❌ Failed to send message. Please try again or contact me directly via email.');
+    }
   };
 
   const contactInfo = [
