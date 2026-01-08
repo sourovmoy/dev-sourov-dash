@@ -201,8 +201,21 @@ const Contact = () => {
                 </div>
               </div>
               
+              {/* CV Download Button */}
+              <div className="mt-8">
+                <a 
+                  href="/sourov-dash-cv.pdf"
+                  download="Sourov_Dash_CV.pdf"
+                  className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-6 rounded-xl hover:from-primary/90 hover:to-secondary/90 transition-all flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg hover:shadow-primary/50 group"
+                >
+                  <i className="fas fa-download group-hover:animate-bounce"></i>
+                  <span>DOWNLOAD CV</span>
+                  <div className="w-2 h-2 bg-white/30 rounded-full animate-pulse"></div>
+                </a>
+              </div>
+
               {/* Availability Status */}
-              <div className="mt-8 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800">
+              <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                   <div>
