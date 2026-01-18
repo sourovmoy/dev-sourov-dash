@@ -19,7 +19,7 @@ const Projects = () => {
       title: 'Digital Life Lessons Platform',
       description: 'An interactive educational platform designed to teach essential digital life skills and lessons. Features user-friendly navigation, responsive design, and engaging content delivery for modern learners.',
       image: digitalLifeLessonsImg,
-      liveUrl: 'https://digital-life-lessons-to-learn.netlify.app/',
+      liveUrl: 'https://digital-life-lesson-client.vercel.app/',
       technologies: ['React', 'JavaScript', 'CSS3', 'Responsive Design', 'Educational Tech'],
       gradient: 'from-blue-500 to-purple-600',
       category: 'Educational Platform'
@@ -29,7 +29,7 @@ const Projects = () => {
       title: 'Hero Apps Collection',
       description: 'A comprehensive collection of utility applications showcasing various React components and functionalities. Demonstrates modern UI/UX principles with clean, intuitive interfaces.',
       image: heroAppsImg,
-      liveUrl: 'https://hero-apps-oi.netlify.app/',
+      liveUrl: 'https://sourov-hero-oi.vercel.app/',
       technologies: ['React', 'JavaScript', 'Modern UI', 'Component Library', 'Utility Apps'],
       gradient: 'from-emerald-500 to-teal-600',
       category: 'Utility Collection'
@@ -39,7 +39,7 @@ const Projects = () => {
       title: 'Community Cleanliness Reporter',
       description: 'A civic engagement platform enabling citizens to report cleanliness issues in their community. Features real-time reporting, location tracking, and community collaboration tools.',
       image: communityCleanlinessImg,
-      liveUrl: 'https://community-cleanliness-issues-report.netlify.app/',
+      liveUrl: 'https://community-cleanliness-client.vercel.app/',
       technologies: ['React', 'Community Tech', 'Reporting System', 'Civic Engagement', 'Social Impact'],
       gradient: 'from-green-500 to-blue-600',
       category: 'Civic Platform'
