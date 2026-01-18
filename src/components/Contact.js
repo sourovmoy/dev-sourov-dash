@@ -205,7 +205,7 @@ const Contact = () => {
               {/* CV Download Button */}
               <div className="mt-8">
                 <a 
-                  href="/sourov-dash-cv.pdf"
+                  href="/Sourov Dash - Frontend Developer Resume.pdf"
                   download="Sourov_Dash_CV.pdf"
                   className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-6 rounded-xl hover:from-primary/90 hover:to-secondary/90 transition-all flex items-center justify-center gap-3 transform hover:scale-105 shadow-lg hover:shadow-primary/50 group"
                 >

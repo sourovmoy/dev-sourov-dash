@@ -26,6 +26,26 @@ const Projects = () => {
     },
     {
       id: 2,
+      title: 'Community Cleanliness Reporter',
+      description: 'A civic engagement platform enabling citizens to report cleanliness issues in their community. Features real-time reporting, location tracking, and community collaboration tools.',
+      image: communityCleanlinessImg,
+      liveUrl: 'https://community-cleanliness-client.vercel.app/',
+      technologies: ['React', 'Community Tech', 'Reporting System', 'Civic Engagement', 'Social Impact'],
+      gradient: 'from-green-500 to-blue-600',
+      category: 'Civic Platform'
+    },
+     {
+      id: 3,
+      title: 'Green Nest Eco Hub',
+      description: 'A comprehensive eco-living platform providing resources, tips, and tools for sustainable lifestyle choices. Combines modern web technology with environmental consciousness.',
+      image: greenNestImg,
+      liveUrl: 'https://sourov-green-nest.vercel.app/',
+      technologies: ['React', 'Eco-Tech', 'Sustainable Living', 'Green Technology', 'Environmental Solutions'],
+      gradient: 'from-teal-500 to-green-600',
+      category: 'Sustainability Hub'
+    },
+    {
+      id: 4,
       title: 'Hero Apps Collection',
       description: 'A comprehensive collection of utility applications showcasing various React components and functionalities. Demonstrates modern UI/UX principles with clean, intuitive interfaces.',
       image: heroAppsImg,
@@ -35,17 +55,7 @@ const Projects = () => {
       category: 'Utility Collection'
     },
     {
-      id: 3,
-      title: 'Community Cleanliness Reporter',
-      description: 'A civic engagement platform enabling citizens to report cleanliness issues in their community. Features real-time reporting, location tracking, and community collaboration tools.',
-      image: communityCleanlinessImg,
-      liveUrl: 'https://community-cleanliness-client.vercel.app/',
-      technologies: ['React', 'Community Tech', 'Reporting System', 'Civic Engagement', 'Social Impact'],
-      gradient: 'from-green-500 to-blue-600',
-      category: 'Civic Platform'
-    },
-    {
-      id: 4,
+      id: 5,
       title: 'Green Earth Initiative',
       description: 'An environmental awareness platform promoting sustainable practices and eco-friendly solutions. Features interactive content, environmental tips, and green living resources.',
       image: greenEarthImg,
@@ -54,16 +64,7 @@ const Projects = () => {
       gradient: 'from-green-400 to-emerald-600',
       category: 'Environmental Platform'
     },
-    {
-      id: 5,
-      title: 'Green Nest Eco Hub',
-      description: 'A comprehensive eco-living platform providing resources, tips, and tools for sustainable lifestyle choices. Combines modern web technology with environmental consciousness.',
-      image: greenNestImg,
-      liveUrl: 'https://sourov-green-nest.netlify.app/',
-      technologies: ['React', 'Eco-Tech', 'Sustainable Living', 'Green Technology', 'Environmental Solutions'],
-      gradient: 'from-teal-500 to-green-600',
-      category: 'Sustainability Hub'
-    }
+   
   ];
 
   // Animation variants
