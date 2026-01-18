@@ -93,6 +93,7 @@ const Contact = () => {
       alert(errorMessage);
       
       // Log error for debugging (remove in production)
+      // eslint-disable-next-line no-console
       console.error('EmailJS Error:', error);
     }
   };
