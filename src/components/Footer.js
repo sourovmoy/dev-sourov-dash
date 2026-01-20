@@ -94,7 +94,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
                 <i className="fas fa-phone text-primary"></i>
-                <span>+8801742818496</span>
+                <a href="tel:+8801742818496">+8801742818496</a>
               </div>
               <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
                 <i className="fas fa-map-marker-alt text-primary"></i>
