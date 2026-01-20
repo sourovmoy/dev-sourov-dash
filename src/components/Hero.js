@@ -264,20 +264,6 @@ const Hero = () => {
               MERN Developer
             </motion.span>
             <span className="text-secondary mx-2">•</span>
-            <motion.span 
-              className="inline-block"
-              animate={{
-                y: [0, -10, 0],
-                transition: {
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 2
-                }
-              }}
-            >
-              Problem Solver
-            </motion.span>
           </motion.div>
           
           <motion.p 

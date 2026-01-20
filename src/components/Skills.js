@@ -6,11 +6,29 @@ const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
 
+  // Tailwind CSS Logo Component
+  const TailwindLogo = ({ className }) => (
+    <svg className={className} viewBox="0 0 54 33" fill="currentColor">
+      <g clipPath="url(#prefix__clip0)">
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"
+        />
+      </g>
+      <defs>
+        <clipPath id="prefix__clip0">
+          <path d="M0 0h54v32.4H0z" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+
   const frontendSkills = [
     { name: 'HTML5', icon: 'fab fa-html5', color: 'text-orange-500' },
     { name: 'CSS3', icon: 'fab fa-css3-alt', color: 'text-blue-500' },
     { name: 'JavaScript', icon: 'fab fa-js', color: 'text-yellow-400' },
-    { name: 'Tailwind', icon: 'fas fa-wind', color: 'text-cyan-400' },
+    { name: 'Tailwind', icon: 'tailwind-logo', color: 'text-cyan-400' },
     { name: 'React', icon: 'fab fa-react', color: 'text-cyan-400' }
   ];
 
@@ -97,14 +115,27 @@ const Skills = () => {
         whileTap={{ scale: 0.95 }}
         custom={index}
       >
-        <motion.i 
-          className={`${skill.icon} ${iconSize} ${getIconStyle(skill.name, skill.color)} mb-3 group-hover:scale-110 transition-transform`}
-          whileHover={{ 
-            rotate: 360,
-            scale: 1.2
-          }}
-          transition={{ duration: 0.6 }}
-        />
+        {skill.icon === 'tailwind-logo' ? (
+          <motion.div
+            className={`${iconSize} ${getIconStyle(skill.name, skill.color)} mb-3 group-hover:scale-110 transition-transform flex items-center justify-center`}
+            whileHover={{ 
+              rotate: 360,
+              scale: 1.2
+            }}
+            transition={{ duration: 0.6 }}
+          >
+            <TailwindLogo className="w-10 h-6" />
+          </motion.div>
+        ) : (
+          <motion.i 
+            className={`${skill.icon} ${iconSize} ${getIconStyle(skill.name, skill.color)} mb-3 group-hover:scale-110 transition-transform`}
+            whileHover={{ 
+              rotate: 360,
+              scale: 1.2
+            }}
+            transition={{ duration: 0.6 }}
+          />
+        )}
         <span className={`font-bold ${textSize} text-center group-hover:text-primary transition-colors text-gray-700 dark:text-gray-300`}>
           {skill.name}
         </span>
